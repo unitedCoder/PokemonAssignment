@@ -1,0 +1,25 @@
+sqlite3 testDB.db
+
+CREATE TABLE main.pokemon(
+    id INT PRIMARY KEY NOT NULL,
+    name TEXT NOT NULL,
+    weight INT,
+    numMoves INT
+);
+
+CREATE TABLE main.pokemonMoves(
+    moveId INT NOT NULL,
+    moveName TEXT NOT NULL,
+    pokemonId INT NOT NULL,
+    accuracy INT NOT NULL,
+    PRIMARY KEY (moveId, pokemonId),
+    FOREIGN KEY (pokemonId) REFERENCES pokemon (id)
+);
+
+CREATE TABLE main.pokemonTypes(
+    typeId INT NOT NULL,
+    typeName TEXT NOT NULL,
+    pokemonId INT NOT NULL,
+    PRIMARY KEY (typeId, pokemonId),
+    FOREIGN KEY (pokemonId) REFERENCES pokemon (id)
+);
